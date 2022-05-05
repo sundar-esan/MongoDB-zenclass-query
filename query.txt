@@ -1,0 +1,23 @@
+Find all the topics and tasks which are thought in the month of October
+
+db.zenclass.find({month:"october"},{_id:0,topic:1,tasks:1}).pretty();
+
+Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+db.zenclass.find({date: {$gt:"15-oct-2020", $lt:"31-oct-2020"}},{_id:0,company_drives:1}).pretty();
+
+Find all the company drives and students who are appeared for the placement.
+
+db.zenclass.find({placement:"appeared"},{_id:0,user:1,company_drives:1}).pretty();
+
+Find the number of problems solved by the user in codekata
+
+db.zenclass.find({},{_id:0,user:1,codekata_solved:1}).pretty();
+
+Find all the mentors with who has the mentee's count more than 15
+
+db.zenclass.find({mentors:{$gt:15}},{_id:0,user:1,mentors:1}).pretty();
+
+Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+db.zenclass.find({"attendance": {"$eq" : "absent"},"tasks": {"$eq":"not_submitted"}}).count();
